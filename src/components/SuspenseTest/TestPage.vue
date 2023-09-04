@@ -10,7 +10,6 @@ import * as echarts from "../../../echarts/echarts.min.js"; //导入echarts
 export default {
   components: {},
   mounted() {
-    console.log(this.$route.query.id); // 输出：123
     //1. 显示基本的中国地图
     //2. 将空气质量的数据设置给series下的对象
     //3. 将series下的数据和geo关联起来
