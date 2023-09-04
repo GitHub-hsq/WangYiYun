@@ -95,7 +95,7 @@ export default {
       //查看数据
       viewData(){
         this.$router.push({
-          path:"/test",
+          path:"/viweData",
           query:{
             id:110,
           }

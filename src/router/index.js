@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 //import HomeView from '../views/HomeView.vue'
 import PlantModeling from '../views/PlantModeling.vue'
 import TestPage from '../components/SuspenseTest/TestPage.vue'
+import HomeJia from '../components/SuspenseTest/HomeJia.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: TestPage
+  },
+  {
+    path: '/viweData',
+    name: 'viweData',
+    component: HomeJia
   },
 ]
 
