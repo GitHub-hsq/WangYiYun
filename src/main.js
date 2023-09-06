@@ -6,6 +6,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import BMap  from 'vue-baidu-map'
 
+import * as echarts from 'echarts'
+Vue.prototype.$echarts = echarts;
+
+// import geoJson from './assets/js/china.json'
+// echarts.registerMap('china', geoJson);
+
+
 
 
 Vue.config.productionTip = false

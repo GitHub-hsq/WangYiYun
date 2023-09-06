@@ -42,6 +42,7 @@
             <el-button type="primary" @click="open">新增</el-button>
             <el-button @click="RemovetableData">删除</el-button>
             <el-button @click="viewData">查看数据</el-button>
+            <el-button @click="viewChina">查看中国地图</el-button>
         </el-row>
     </div>
 
@@ -96,6 +97,16 @@ export default {
       viewData(){
         this.$router.push({
           path:"/viweData",
+          query:{
+            id:110,
+          }
+        });
+  
+      },
+      //查看中国地图
+      viewChina(){
+        this.$router.push({
+          path:"/test",
           query:{
             id:110,
           }
