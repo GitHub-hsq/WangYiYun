@@ -1,3 +1,4 @@
+开心就好
 # gongc
 
 ## Project setup
