@@ -5,10 +5,12 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import BMap  from 'vue-baidu-map'
+import * as $ajax from 'axios'
 
 import * as echarts from 'echarts'
 Vue.prototype.$echarts = echarts;
 
+Vue.prototype.$ajax = $ajax;
 // import geoJson from './assets/js/china.json'
 // echarts.registerMap('china', geoJson);
 

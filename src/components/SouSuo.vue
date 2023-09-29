@@ -43,6 +43,8 @@
             <el-button @click="RemovetableData">删除</el-button>
             <el-button @click="viewData">查看数据</el-button>
             <el-button @click="viewChina">查看中国地图</el-button>
+            <el-button @click="viewXH">查看API</el-button>
+            <el-button @click="viewWyY">进入往亦云</el-button>
         </el-row>
     </div>
 
@@ -93,6 +95,11 @@ export default {
       }
     },
     methods:{
+      viewWyY(){
+        this.$router.push({
+          path:"/WyY"
+        })
+      },
       //查看数据
       viewData(){
         this.$router.push({
@@ -112,6 +119,15 @@ export default {
           }
         });
   
+      },
+      //查看API
+      viewXH () {
+        this.$router.push({
+          path:"/xiaohua",
+          query:{
+            id:550
+          }
+        })
       },
         //重置搜索框的数据
         searchReset(){
