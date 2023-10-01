@@ -3,13 +3,13 @@
     <div class="gcnh" >
         <div id="gc">
           <div class="jm">
-            <span>工厂建模</span>
+            <span>欢迎来到</span>
           </div>
   
         </div>
         <div id="nh">
           <div class="ww">
-            <span>你好，王伟!</span>
+            <span>探索星球</span>
           </div>
       
         </div>

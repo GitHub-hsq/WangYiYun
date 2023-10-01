@@ -102,7 +102,6 @@
                 </el-carousel>
             </div>
             <SectionsCard class="SectionsCard"></SectionsCard>
-            <div style="height: 100px;width: 100px; background-color: rgb(213, 23, 207);"></div>
         </div>
     </div>
     <div class="Footer">
@@ -183,7 +182,7 @@ export default {
 <style lang="less" scoped>
 @logo:"../../assets/images/Wyy_logo2.jfif";
 @header_height: 70px;
-@footer_height: 90px;
+@footer_height: 80px;
 @bodys_height: calc(100vh - @header_height - @footer_height);
 @img_height: calc(@header_height / 1.5);
 .borders(){/**不输出的混合 */
@@ -193,6 +192,8 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to top right,#c6e2fc,#fbc7ff);
 
 }
 .Header {
@@ -277,7 +278,7 @@ export default {
 .Bodys {
     display: flex;
     height: @bodys_height;
-    background-color: rgb(8, 250, 0);
+
     .Sidebars {//侧栏
         flex: 1;
         background-color: #444;
@@ -317,14 +318,37 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
         .Carousel {
+            flex: 1;
+            padding-top: 5px;
             width: 90%;
             img {
                 width: 100%;
             }
         }
         .SectionsCard {
-            width: 90%;
+            flex: 2;
+            width: 100%;
+            display: flex;
+           // height: 346px;
+            overflow-y: scroll;
+            // 滚动条宽度
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            // 滚动条轨道
+            &::-webkit-scrollbar-track {
+                background: #e0e0e0;
+            }
+            // 小滑块
+            &::-webkit-scrollbar-thumb {
+                background: #b5b4b4;
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb:hover {
+                background: #999;
+            }
         }
     }
 }

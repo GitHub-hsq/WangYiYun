@@ -22,12 +22,12 @@ module.exports = defineConfig({
       //   ws: true,
       //   changeOrigin: true
       // },
-      // '/emailTest%99': {
-      //   target: 'https://api.apiopen.top',
-      //   pathRewrite: {'^/emailTest%99' : ''},
-      //   ws: true,
-      //   changeOrigin: true
-      // },
+      '/emailTest%99': {
+        target: 'https://api.apiopen.top',
+        pathRewrite: {'^/emailTest%99' : ''},
+        ws: true,
+        changeOrigin: true
+      },
       '/movie': {
         target: 'https://api.pingcc.cn',
         pathRewrite: {'/movie' : ''},
