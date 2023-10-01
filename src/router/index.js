@@ -6,6 +6,7 @@ import TestPage from '../components/SuspenseTest/TestPage.vue'
 import HomeJia from '../components/SuspenseTest/HomeJia.vue'
 import TestXH from '../components/SuspenseTest/TestXH'
 import WyY from '../components/SuspenseTest/WyY'
+import SectionsCard from '../components/SuspenseTest/SectionsCard'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,7 @@ const routes = [
   {
     path: '/test',
     name: 'test',
-    component: TestPage
+    component: SectionsCard
   },
   {
     path:'/xiaohua',
