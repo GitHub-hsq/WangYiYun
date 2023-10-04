@@ -6,6 +6,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import BMap  from 'vue-baidu-map'
 import * as $ajax from 'axios'
+import VueAudio from 'vue-audio-better'
 
 import * as echarts from 'echarts'
 Vue.prototype.$echarts = echarts;
@@ -22,6 +23,7 @@ Vue.use(BMap , {
   ak: '7VbAClsuja7FTOGxT1ajEeiwyKpUhsYU'//ak密钥
 });
 Vue.use(ElementUI);
+Vue.use(VueAudio);
 
 new Vue({
   router,

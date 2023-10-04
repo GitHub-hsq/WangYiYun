@@ -22,18 +22,36 @@ module.exports = defineConfig({
       //   ws: true,
       //   changeOrigin: true
       // },
-      '/emailTest%99': {
-        target: 'https://api.apiopen.top',
-        pathRewrite: {'^/emailTest%99' : ''},
-        ws: true,
+      // '/emailTest%99': {
+      //   target: 'https://api.apiopen.top',
+      //   pathRewrite: {'^/emailTest%99' : ''},
+      //   ws: true,
+      //   changeOrigin: true
+      // },
+      // '/movie': {
+      //   target: 'https://api.pingcc.cn',
+      //   pathRewrite: {'^/movie' : ''},
+      //   ws: true,
+      //   changeOrigin: true
+      // },
+      // '/wrdan%dy/': {
+      //   target: 'https://api.wrdan.com',
+      //   pathRewrite: {'^/wrdan%dy/' : '/'},
+      //   ws:true,
+      //   changeOrigin: true
+      // },
+      '/bbj%8/': {
+        target: 'https://api.cenguigui.cn',
+        pathRewrite: {'^/bbj%8/' : '/'},
+        ws:true,
         changeOrigin: true
       },
-      '/movie': {
-        target: 'https://api.pingcc.cn',
-        pathRewrite: {'/movie' : ''},
-        ws: true,
+      '/sbjk%8/': {
+        target: 'https://free.wqwlkj.cn',
+        pathRewrite: {'^/sbjk%8/' : '/'},
+        ws:true,
         changeOrigin: true
-      }
+      },
     }
   }
 })

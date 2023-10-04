@@ -8,6 +8,7 @@ import TestXH from '../components/SuspenseTest/TestXH'
 import WyY from '../components/SuspenseTest/WyY'
 import SectionsCard from '../components/SuspenseTest/SectionsCard'
 import TestCard from '../components/SuspenseTest/TestCard'
+import MusicPlay from '../components/SuspenseTest/MusicPlay'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/test',
     name: 'test',
     component: TestCard
+  },
+  {
+    path: '/test1',
+    name: 'test1',
+    component: MusicPlay
   },
   {
     path:'/xiaohua',

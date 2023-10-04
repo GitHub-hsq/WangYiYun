@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="Footer">
-        <img src="../../assets/images/footer_img.png" alt="加载失败">
+        <MusicPlay></MusicPlay>
     </div>
   </div>
 </template>
@@ -114,11 +114,13 @@
 import axios from 'axios';
 import VueAliplayerV2 from "vue-aliplayer-v2";
 import SectionsCard from './SectionsCard.vue'
+import MusicPlay from './MusicPlay.vue';
 export default {
     name: 'WyY',
     components:{
         VueAliplayerV2,
-        SectionsCard
+        SectionsCard,
+        MusicPlay
     },
     data(){
         return {

@@ -1,11 +1,9 @@
 <template>
     <div>
-        <el-button @click="setLoading">点我播放视频</el-button>
-        <audio :src="musicList[0].palayurl" controls v-if="loading"></audio>
         <div class="BodyDiv">
             <el-skeleton class="BodyDiv_skeleton"  :loading="loading" animated :count="1">
                 <div class="BodyDiv_skeleton_template" slot="template">
-                    <el-col style="width: 200px;" v-for="(item,index) in playVideos" :key="index" >
+                    <el-col style="width: 200px;" v-for="(item,index) in lists" :key="index" >
                         <el-skeleton-item variant="image" style="width: 200px; height: 133px;"/>
                         <div style="width: 200px; padding:5px 0px;">
                             <el-skeleton-item variant="h3" style="width: 50%;" />
@@ -18,17 +16,21 @@
                 </div>
 
                 <template>
-
-                    <div class="Cardfather" v-for="(item,index) in playVideos.list" :key="index"
+                    <div class="Cardfather" v-for="(item,index) in lists" :key="index"
                     style="padding: 10px 10px;"
                     :class="{'Card_hover': activeIndex === index}" 
                     @mouseenter="changeSize(index)" 
                     @mouseleave="resetSize()">
 
                         <el-card shadow="hover" :body-style="{ padding: '0px', marginBottom: '1px' }">
-                            <!-- <img :src="item.imgUrl" class="image multi-content" /> -->
-                            <TestXH :playurl="item.playurl" :picurl="item.picurl" 
-                             ref="activeChildRef" ></TestXH>
+                            <img :src="item.imgUrl" class="image multi-content" />
+                            <div class="Card_bottom_div" style="padding:5px 10px;">
+                                <span>{{ item.name + index }}</span>
+                                <div class="bottom card-header Card_bottom_div_mini">
+                                    <span class="time">{{ currentDate }}</span>
+                                    <el-button type="text" class="button el-icon-video-play" ></el-button>
+                                </div>
+                            </div>
                         </el-card>                                                   
                     </div>
 
@@ -41,80 +43,90 @@
 </template>
   
 <script>
-import axios from 'axios';
-import TestXH from './TestXH.vue';
 export default {
     name:"SectionsCard",
-    components:{
-        TestXH
-    },
     data() {
     return {
-        loading: false,
-        playVideos: {
-            list: [],
-            total: 0,
-            listLenght: 0,
-        },
-        musicList:[],
+        loading: true,
+        currentDate: '2021-06-01',
+        lists: [],
         activeIndex: null,//当前激活的卡片索引
     }
     },
     mounted() {
-        //this.getVideoList();
+        this.loading = false
+        this.lists = [
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            name: '鹿',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            name: '马',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            name: '山狮',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            name: '鹿',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            name: '马',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            name: '山狮',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            name: '鹿',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            name: '马',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            name: '山狮',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            name: '鹿',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            name: '马',
+            },
+            {
+            imgUrl:
+                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            name: '山狮',
+            },
+            
+        ]
     },
     methods: {
-        getVideoList(){
-            //视频
-            axios({
-                method:'get',
-                url:'/emailTest%99/api/getMiniVideo',
-                //url:'/emailTest%99/api/getHaoKanVideo',
-                params:{
-                    page: 0,
-                    size: 1,
-                },
-
-            }).then(res=>{   
-                this.playVideos.list = res.data.result.list;
-                this.playVideos.total = res.data.result.total;
-                this.playVideos.listLenght = res.data.result.list.length;
-                console.log("返回的数据",res.data.result);
-            }).catch(error => {
-                console.log(error)
-            })
-        },
         setLoading() {
-            axios({
-                method: 'get',
-                //url:'/bbj%8/api/netease/',
-                url: '/sbjk%8/wqwlapi/wyy_random.php?type=json'
-            }).then(res=>{
-                console.log("获取成功了",res);
-                this.musicList.push({
-                    palayurl: res.data.data.url,
-                    cover: res.data.data.picurl,
-                    name: res.data.data.name
-                })
-                // this.musicList.push({
-                //    palayurl: res.data.data.play_url,
-                //    cover: res.data.data.img,
-                //    name: res.data.data.song_name,
-                // });
-                 this.loading = true;
-                console.log("处理后的数据",this.musicList);
-            }).catch(error => {
-                console.log(error)
-            })
+            this.loading = true
+            setTimeout(() => (this.loading = false), 500)
         },
         //鼠标放到卡片上激活
         changeSize(index){
             this.activeIndex = index;//激活的卡片索引
-            const child = this.$refs.activeChildRef;
-            if(child){
-                child[0].mouseenter();
-            }
-
         },
         resetSize(){
             this.activeIndex = null;//重置卡片索引

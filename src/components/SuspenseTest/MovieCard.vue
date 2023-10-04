@@ -1,12 +1,10 @@
 <template>
     <div>
-        <el-button @click="setLoading">点我播放视频</el-button>
-        <audio :src="musicList[0].palayurl" controls v-if="loading"></audio>
         <div class="BodyDiv">
             <el-skeleton class="BodyDiv_skeleton"  :loading="loading" animated :count="1">
                 <div class="BodyDiv_skeleton_template" slot="template">
-                    <el-col style="width: 200px;" v-for="(item,index) in playVideos" :key="index" >
-                        <el-skeleton-item variant="image" style="width: 200px; height: 133px;"/>
+                    <el-col style="width: 200px;" v-for="(item,index) in lists" :key="index" >
+                        <el-skeleton-item variant="image" style="width: 200px; height: 145px;"/>
                         <div style="width: 200px; padding:5px 0px;">
                             <el-skeleton-item variant="h3" style="width: 50%;" />
                             <div style="display: flex; align-items: center; justify-items: space-between; margin-top: 16px; height: 16px;">
@@ -18,21 +16,26 @@
                 </div>
 
                 <template>
-
-                    <div class="Cardfather" v-for="(item,index) in playVideos.list" :key="index"
+                    <div class="Cardfather" v-for="(item,index) in lists" :key="index"
                     style="padding: 10px 10px;"
                     :class="{'Card_hover': activeIndex === index}" 
                     @mouseenter="changeSize(index)" 
                     @mouseleave="resetSize()">
 
                         <el-card shadow="hover" :body-style="{ padding: '0px', marginBottom: '1px' }">
-                            <!-- <img :src="item.imgUrl" class="image multi-content" /> -->
-                            <TestXH :playurl="item.playurl" :picurl="item.picurl" 
-                             ref="activeChildRef" ></TestXH>
+                            <img :src="item.cover" class="image multi-content" alt="暂无资源"/>
+                            <div class="Card_bottom_div" style="padding:2px 10px;">
+                                <span>{{ item.title}}</span>
+                                <div class="bottom card-header Card_bottom_div_mini">
+                                    <span class="time">{{'导演：'+ item.director }}</span>
+                                    <el-button type="text" class="button el-icon-video-play" ></el-button>
+                                </div>
+                            </div>
+                            <div class="Card_bottom_divtwo" v-show="activeIndex === index">
+                                <p>&nbsp;{{ item.descs }}</p>
+                            </div>
                         </el-card>                                                   
-                    </div>
-
-                    
+                    </div>    
                 </template>
             </el-skeleton>
         </div>
@@ -41,80 +44,41 @@
 </template>
   
 <script>
-import axios from 'axios';
-import TestXH from './TestXH.vue';
+import axios from 'axios'
 export default {
     name:"SectionsCard",
-    components:{
-        TestXH
-    },
     data() {
     return {
-        loading: false,
-        playVideos: {
-            list: [],
-            total: 0,
-            listLenght: 0,
-        },
-        musicList:[],
+        loading: true,
+        currentDate: '2021-06-01',
+        lists: [],
         activeIndex: null,//当前激活的卡片索引
     }
     },
     mounted() {
-        //this.getVideoList();
+        this.getMovi();
     },
     methods: {
-        getVideoList(){
-            //视频
+        getMovi(){//获取电影资料
+            this.loading = true
             axios({
-                method:'get',
-                url:'/emailTest%99/api/getMiniVideo',
-                //url:'/emailTest%99/api/getHaoKanVideo',
-                params:{
-                    page: 0,
-                    size: 1,
-                },
-
+                method:'get',         
+                url:`/movie/video/search/title/${'钢铁侠'}/1/9`,
             }).then(res=>{   
-                this.playVideos.list = res.data.result.list;
-                this.playVideos.total = res.data.result.total;
-                this.playVideos.listLenght = res.data.result.list.length;
-                console.log("返回的数据",res.data.result);
+                this.lists = res.data.data;
+                setTimeout(() => (this.loading = false), 500);
+                console.log(this.lists,111);
             }).catch(error => {
                 console.log(error)
             })
         },
         setLoading() {
-            axios({
-                method: 'get',
-                //url:'/bbj%8/api/netease/',
-                url: '/sbjk%8/wqwlapi/wyy_random.php?type=json'
-            }).then(res=>{
-                console.log("获取成功了",res);
-                this.musicList.push({
-                    palayurl: res.data.data.url,
-                    cover: res.data.data.picurl,
-                    name: res.data.data.name
-                })
-                // this.musicList.push({
-                //    palayurl: res.data.data.play_url,
-                //    cover: res.data.data.img,
-                //    name: res.data.data.song_name,
-                // });
-                 this.loading = true;
-                console.log("处理后的数据",this.musicList);
-            }).catch(error => {
-                console.log(error)
-            })
+            this.loading = true
+            setTimeout(() => (this.loading = false), 500)
         },
         //鼠标放到卡片上激活
         changeSize(index){
             this.activeIndex = index;//激活的卡片索引
-            const child = this.$refs.activeChildRef;
-            if(child){
-                child[0].mouseenter();
-            }
-
         },
         resetSize(){
             this.activeIndex = null;//重置卡片索引
@@ -177,7 +141,20 @@ export default {
         }
     }
     .image {
-        width: 100%;
+        height: 145px; /* 图片高度设置为100%以填充整个容器 */
+        object-fit: cover; /* 图片按比例缩放并填充容器 */
+    }
+    .Card_bottom_divtwo {
+        font-size: 8px;
+        height: 107px;
+        overflow: hidden;
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
+        p {
+            margin: 0 3px; /* 清除段落默认外边距 */
+            letter-spacing: 1px;
+            height: 100%;
+            overflow: hidden;
+        }
     }
     .el-card {
         width: 200px;

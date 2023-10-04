@@ -120,10 +120,6 @@ export default {
         ]
     },
     methods: {
-        setLoading() {
-            this.loading = true
-            setTimeout(() => (this.loading = false), 500)
-        },
         //鼠标放到卡片上激活
         changeSize(index){
             this.activeIndex = index;//激活的卡片索引
