@@ -1,5 +1,5 @@
 <template>
-    <div class="Sections">
+    <div class="Sectionss">
 
         <!-- <el-button @click="getList()">点我获取音乐列表</el-button> -->
         <!-- <el-button @click="getData()">查看组件信息</el-button> -->
@@ -192,11 +192,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.Sectionss {
+    width: 100%;
+}
 .musicComponent {
     background-image: linear-gradient(90deg,#9ca5f5,#7ff5ae);
     display: flex;
     justify-content: space-around;
-
+    width: 100%;
     .leftPlay {
         width: 300px;
         display: flex;

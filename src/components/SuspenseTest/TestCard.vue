@@ -1,10 +1,10 @@
 <template>
     <div>
-        <el-button @click="setLoading">点我播放视频</el-button>
+        <el-button @click="getVideoList()">点我播放视频</el-button>
         <audio :src="musicList[0].palayurl" controls v-if="loading"></audio>
         <div class="BodyDiv">
             <el-skeleton class="BodyDiv_skeleton"  :loading="loading" animated :count="1">
-                <div class="BodyDiv_skeleton_template" slot="template">
+                <!-- <div class="BodyDiv_skeleton_template" slot="template">
                     <el-col style="width: 200px;" v-for="(item,index) in playVideos" :key="index" >
                         <el-skeleton-item variant="image" style="width: 200px; height: 133px;"/>
                         <div style="width: 200px; padding:5px 0px;">
@@ -15,7 +15,7 @@
                             </div>
                         </div>
                     </el-col>
-                </div>
+                </div> -->
 
                 <template>
 
@@ -44,7 +44,7 @@
 import axios from 'axios';
 import TestXH from './TestXH.vue';
 export default {
-    name:"SectionsCard",
+    name:"TestCard",
     components:{
         TestXH
     },
@@ -56,12 +56,11 @@ export default {
             total: 0,
             listLenght: 0,
         },
-        musicList:[],
         activeIndex: null,//当前激活的卡片索引
     }
     },
     mounted() {
-        //this.getVideoList();
+        this.getVideoList();
     },
     methods: {
         getVideoList(){
@@ -80,29 +79,6 @@ export default {
                 this.playVideos.total = res.data.result.total;
                 this.playVideos.listLenght = res.data.result.list.length;
                 console.log("返回的数据",res.data.result);
-            }).catch(error => {
-                console.log(error)
-            })
-        },
-        setLoading() {
-            axios({
-                method: 'get',
-                //url:'/bbj%8/api/netease/',
-                url: '/sbjk%8/wqwlapi/wyy_random.php?type=json'
-            }).then(res=>{
-                console.log("获取成功了",res);
-                this.musicList.push({
-                    palayurl: res.data.data.url,
-                    cover: res.data.data.picurl,
-                    name: res.data.data.name
-                })
-                // this.musicList.push({
-                //    palayurl: res.data.data.play_url,
-                //    cover: res.data.data.img,
-                //    name: res.data.data.song_name,
-                // });
-                 this.loading = true;
-                console.log("处理后的数据",this.musicList);
             }).catch(error => {
                 console.log(error)
             })

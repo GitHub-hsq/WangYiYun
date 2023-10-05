@@ -25,9 +25,9 @@
                         <el-card shadow="hover" :body-style="{ padding: '0px', marginBottom: '1px' }">
                             <img :src="item.imgUrl" class="image multi-content" />
                             <div class="Card_bottom_div" style="padding:5px 10px;">
-                                <span>{{ item.name + index }}</span>
+                                <span>大明星-鱼鱼</span>
                                 <div class="bottom card-header Card_bottom_div_mini">
-                                    <span class="time">{{ currentDate }}</span>
+                                    <span class="time">2023-10-5</span>
                                     <el-button type="text" class="button el-icon-video-play" ></el-button>
                                 </div>
                             </div>
@@ -44,6 +44,7 @@
   
 <script>
 export default {
+    //原始的动物卡片
     name:"SectionsCard",
     data() {
     return {
@@ -58,63 +59,37 @@ export default {
         this.lists = [
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-            name: '鹿',
+                require('../../assets/images/yuyu/0.jpg'),
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            require('../../assets/images/yuyu/1.jpg'),
             name: '马',
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            require('../../assets/images/yuyu/2.jpg'),
             name: '山狮',
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            require('../../assets/images/yuyu/3.jpg'),
             name: '鹿',
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+            require('../../assets/images/yuyu/4.jpg'),
             name: '马',
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+            require('../../assets/images/yuyu/5.jpg'),
             name: '山狮',
             },
             {
             imgUrl:
-                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+            require('../../assets/images/yuyu/6.jpg'),
             name: '鹿',
-            },
-            {
-            imgUrl:
-                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-            name: '马',
-            },
-            {
-            imgUrl:
-                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-            name: '山狮',
-            },
-            {
-            imgUrl:
-                'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-            name: '鹿',
-            },
-            {
-            imgUrl:
-                'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-            name: '马',
-            },
-            {
-            imgUrl:
-                'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-            name: '山狮',
             },
             
         ]
@@ -137,7 +112,6 @@ export default {
     .BodyDiv_skeleton {
         transition: 0.3s;
         width: 100%;
-        height: 800px;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;

@@ -9,6 +9,8 @@ import WyY from '../components/SuspenseTest/WyY'
 import SectionsCard from '../components/SuspenseTest/SectionsCard'
 import TestCard from '../components/SuspenseTest/TestCard'
 import MusicPlay from '../components/SuspenseTest/MusicPlay'
+import ShortVideo from '../components/SuspenseTest/ShortVideo'
+import JiBenVideo from '../components/SuspenseTest/JiBenVideo'
 
 Vue.use(VueRouter)
 
@@ -21,17 +23,17 @@ const routes = [
   {
     path: '/test',
     name: 'test',
-    component: TestCard
+    component: SectionsCard
   },
   {
     path: '/test1',
     name: 'test1',
-    component: MusicPlay
+    component: JiBenVideo
   },
   {
     path:'/xiaohua',
     name:'xiaohua',
-    component: TestXH
+    component: ShortVideo
   },
   {
     path: '/viweData',
