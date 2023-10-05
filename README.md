@@ -1,4 +1,4 @@
-开心就好
+# 人生得意须尽欢 莫使金樽空对月
 # gongc
 
 ## Project setup
