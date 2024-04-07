@@ -12,11 +12,6 @@ import * as echarts from 'echarts'
 Vue.prototype.$echarts = echarts;
 
 Vue.prototype.$ajax = $ajax;
-// import geoJson from './assets/js/china.json'
-// echarts.registerMap('china', geoJson);
-
-
-
 
 Vue.config.productionTip = false
 Vue.use(BMap , {

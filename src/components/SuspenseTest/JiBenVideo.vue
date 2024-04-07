@@ -61,8 +61,7 @@ export default {
             //视频
             axios({
                 method:'get',
-                url:'/emailTest%99/api/getMiniVideo',
-                //url:'/emailTest%99/api/getHaoKanVideo',
+                url:'https://api.apiopen.top/api/getMiniVideo',
                 params:{
                     page: 0,
                     size: 1,

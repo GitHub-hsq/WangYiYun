@@ -14,28 +14,6 @@
                         </div>
                     </el-col>
                 </div>
-
-                <template>
-                    <div class="Cardfather" v-for="(item,index) in lists" :key="index"
-                    style="padding: 10px 10px;"
-                    :class="{'Card_hover': activeIndex === index}" 
-                    @mouseenter="changeSize(index)" 
-                    @mouseleave="resetSize()">
-
-                        <el-card shadow="hover" :body-style="{ padding: '0px', marginBottom: '1px' }">
-                            <img :src="item.imgUrl" class="image multi-content" />
-                            <div class="Card_bottom_div" style="padding:5px 10px;">
-                                <span>大明星-鱼鱼</span>
-                                <div class="bottom card-header Card_bottom_div_mini">
-                                    <span class="time">2023-10-5</span>
-                                    <el-button type="text" class="button el-icon-video-play" ></el-button>
-                                </div>
-                            </div>
-                        </el-card>                                                   
-                    </div>
-
-                    
-                </template>
             </el-skeleton>
         </div>
     </div>
@@ -47,52 +25,16 @@ export default {
     //原始的动物卡片
     name:"SectionsCard",
     data() {
-    return {
-        loading: true,
-        currentDate: '2021-06-01',
-        lists: [],
-        activeIndex: null,//当前激活的卡片索引
-    }
+        return {
+            loading: true,
+            currentDate: '2021-06-01',
+            lists: [],
+            activeIndex: null,//当前激活的卡片索引
+        }
     },
     mounted() {
         this.loading = false
-        this.lists = [
-            {
-            imgUrl:
-                require('../../assets/images/yuyu/0.jpg'),
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/1.jpg'),
-            name: '马',
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/2.jpg'),
-            name: '山狮',
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/3.jpg'),
-            name: '鹿',
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/4.jpg'),
-            name: '马',
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/5.jpg'),
-            name: '山狮',
-            },
-            {
-            imgUrl:
-            require('../../assets/images/yuyu/6.jpg'),
-            name: '鹿',
-            },
-            
-        ]
+        this.lists = []
     },
     methods: {
         //鼠标放到卡片上激活

@@ -2,26 +2,8 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false,
-  devServer:{
+  devServer:{//配置开发时态的代理Proxy
     proxy:{
-      '/api%88/':{
-        target: 'http://v.juhe.cn',
-        pathRewrite: {'^/api%88/' : '/'},
-        ws: true,
-        changeOrigin: true,//是否撒谎
-      },
-      '/appb9#2/':{
-        target: 'https://apis.juhe.cn',
-        pathRewrite: {'^/appb9#2/' : '/'},
-        ws: true,
-        changeOrigin: true,
-      },
-      '/images@5/':{
-        target: 'https://api.apiopen.top',
-        pathRewrite: {'^/images@5/' : '/'},
-        ws: true,
-        changeOrigin: true
-      },
       '/emailTest%99/': {
         target: 'https://api.apiopen.top',
         pathRewrite: {'^/emailTest%99/' : '/'},
@@ -32,12 +14,6 @@ module.exports = defineConfig({
         target: 'https://api.pingcc.cn',
         pathRewrite: {'^/movie/' : '/'},
         ws: true,
-        changeOrigin: true
-      },
-      '/wrdan%dy/': {
-        target: 'https://api.wrdan.com',
-        pathRewrite: {'^/wrdan%dy/' : '/'},
-        ws:true,
         changeOrigin: true
       },
       '/bbj%8/': {

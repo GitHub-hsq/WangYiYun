@@ -70,9 +70,7 @@
 </template>
  
 <script>
-import viewJs from '../../assets/js/flexible'
-import * as echarts from "../../../echarts/echarts.min.js"; //导入echarts
-import * as chinas from "../../assets/js/china.js"
+import * as echarts from "../echarts/echarts.min.js"; //导入echarts
 export default{
     name:"HomeJia",
     data(){
@@ -1969,4 +1967,4 @@ header h1 {
     background-color: rgba(101, 132, 226, 0.1);
     padding: .1875rem;
 }
-</style>
+</style>../echarts/echarts.min.js/index.js

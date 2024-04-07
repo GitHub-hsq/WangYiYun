@@ -140,15 +140,11 @@
 
 <script>
 import axios from 'axios';
-import VueAliplayerV2 from "vue-aliplayer-v2";
-import SectionsCard from './SectionsCard.vue'
 import MusicPlay from './MusicPlay.vue';
 import ShortVideo from './ShortVideo.vue'
 export default {
     name: 'WyY',
     components:{
-        VueAliplayerV2,
-        SectionsCard,
         MusicPlay,
         ShortVideo
     },
@@ -194,7 +190,7 @@ export default {
                 var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants;//第二个restaurants是没有输入输入的情况，可以放排行榜进行推荐
                 cb(results);
             }).catch(error => {
-                console.log("出错了")
+                console.log("出错了",error)
             });
         },
         //返回匹配的下标

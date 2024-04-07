@@ -1,3 +1,4 @@
+# 过滤哪些文件不用管理
 .DS_Store
 node_modules
 /dist
