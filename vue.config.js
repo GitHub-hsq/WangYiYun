@@ -2,6 +2,13 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false,
+  chainWebpack: config => {
+    config.plugin('html')
+      .tap(args => {
+        args[0].title = '网亦云'; // 替换为你想要的标题
+        return args;
+      })
+  },
   devServer:{//配置开发时态的代理Proxy
     proxy:{
       '/emailTest%99/': {
